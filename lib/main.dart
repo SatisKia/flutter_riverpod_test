@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../view/hoge_view.dart';
 import '../view_model/hoge_view_model.dart';
+import '../view_model/fuga_view_model.dart';
 import '../view_model/piyo_view_model.dart';
 
 void main() {
@@ -14,15 +14,18 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
-  Widget home = HogeViewModel(HogeView());
-//  Widget home = PiyoViewModel(HogeView());
+  static Map<String, StatefulWidget Function(BuildContext context)> routes = {
+    '/': (BuildContext context) => const HogeViewModel(),
+    '/fuga': (BuildContext context) => const FugaViewModel(),
+    '/piyo': (BuildContext context) => const PiyoViewModel(),
+  };
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        home: home
+        routes: routes
     );
   }
 }

@@ -1,10 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../data/hoge_data.dart';
+import '../data/fuga_data.dart';
 
-class HogeModel extends StateNotifier<HogeData> {
+class FugaModel extends StateNotifier<FugaData> {
   Reader read;
-  HogeModel(this.read) : super(const HogeData());
+  FugaModel(this.read) : super(const FugaData());
 
   // 状態を更新する関数
   setHoge(String hoge) {
@@ -16,4 +16,4 @@ class HogeModel extends StateNotifier<HogeData> {
 }
 
 // Riverpodのプロバイダー
-final hogeProvider = StateNotifierProvider<HogeModel, HogeData>((ref) => HogeModel(ref.read));
+final fugaProvider = StateNotifierProvider<FugaModel, FugaData>((ref) => FugaModel(ref.read));

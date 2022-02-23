@@ -2,17 +2,18 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../model/hoge_model.dart';
-import '../view/hoge_view.dart';
+import '../view/piyo_view.dart';
 
 class PiyoViewModel extends ConsumerStatefulWidget {
-  final HogeView view;
-  const PiyoViewModel( this.view, {Key? key} ) : super(key: key);
+  const PiyoViewModel( {Key? key} ) : super(key: key);
 
   @override
   PiyoViewState createState() => PiyoViewState();
 }
 
-class PiyoViewState extends ConsumerState<PiyoViewModel> with WidgetsBindingObserver {
+class PiyoViewState extends ConsumerState with WidgetsBindingObserver {
+  final PiyoView view = PiyoView();
+
   double contentWidth  = 0.0;
   double contentHeight = 0.0;
 
@@ -57,14 +58,14 @@ class PiyoViewState extends ConsumerState<PiyoViewModel> with WidgetsBindingObse
 
   @override
   Widget build( BuildContext context ) {
-    contentWidth  = MediaQuery.of( context ).size.width;
-    contentHeight = MediaQuery.of( context ).size.height - MediaQuery.of( context ).padding.top - MediaQuery.of( context ).padding.bottom;
+    contentWidth = MediaQuery.of( context ).size.width;
 
     return Scaffold(
       appBar: AppBar(
-          toolbarHeight: 0
+          title: Text( 'piyo', style: TextStyle( fontSize: contentWidth / 16 ) ),
+          toolbarHeight: contentWidth / 8
       ),
-      body: widget.view.build( ref, contentWidth ), // ビューにWidgetRefを渡す
+      body: view.build( context, ref, contentWidth ), // ビューにWidgetRefを渡す
     );
   }
 }

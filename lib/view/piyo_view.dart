@@ -7,7 +7,7 @@ import '../main.dart';
 import '../model/hoge_model.dart';
 import '../model/hogehoge_model.dart';
 
-class HogeView {
+class PiyoView {
   Widget build( BuildContext context, WidgetRef ref, double contentWidth ){
     HogehogeData hogehogeData = ref.watch(hogehogeProvider);
     int hogehoge = hogehogeData.hogehoge;
@@ -31,7 +31,7 @@ class HogeView {
                     HogehogeModel hogehogeModel = ref.watch(hogehogeProvider.notifier);
                     hogehogeModel.increment();
 
-                    String routeName = '/fuga';
+                    String routeName = '/';
                     Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
                       settings: RouteSettings(name: routeName),
                       pageBuilder: (_,__,___) => MyApp.routes[routeName]!(context),
@@ -39,7 +39,7 @@ class HogeView {
                     ), (_) => false);
                   },
                   child: Text(
-                    "go fuga",
+                    "go hoge",
                     style: TextStyle( fontSize: contentWidth / 16 ),
                   )
               )
@@ -55,8 +55,8 @@ class HogeView {
                   ),
                   onPressed: (){
                     HogeModel hogeModel = ref.watch(hogeProvider.notifier);
-                    hogeModel.setHoge('abc');
-                    hogeModel.setFuga(123);
+                    hogeModel.setHoge('ghi');
+                    hogeModel.setFuga(789);
                   },
                   child: Text(
                     "SET",

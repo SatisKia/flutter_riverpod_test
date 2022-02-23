@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../data/hoge_data.dart';
+import '../data/fuga_data.dart';
 import '../data/hogehoge_data.dart';
 import '../main.dart';
-import '../model/hoge_model.dart';
+import '../model/fuga_model.dart';
 import '../model/hogehoge_model.dart';
 
-class HogeView {
+class FugaView {
   Widget build( BuildContext context, WidgetRef ref, double contentWidth ){
     HogehogeData hogehogeData = ref.watch(hogehogeProvider);
     int hogehoge = hogehogeData.hogehoge;
 
-    HogeData hogeData = ref.watch(hogeProvider);
-    String? hoge = hogeData.hoge;
-    int? fuga = hogeData.fuga;
+    FugaData fugaData = ref.watch(fugaProvider);
+    String hoge = fugaData.hoge;
+    int fuga = fugaData.fuga;
 
     return Column(
         children: [
@@ -31,7 +31,7 @@ class HogeView {
                     HogehogeModel hogehogeModel = ref.watch(hogehogeProvider.notifier);
                     hogehogeModel.increment();
 
-                    String routeName = '/fuga';
+                    String routeName = '/piyo';
                     Navigator.pushAndRemoveUntil(context, PageRouteBuilder(
                       settings: RouteSettings(name: routeName),
                       pageBuilder: (_,__,___) => MyApp.routes[routeName]!(context),
@@ -39,7 +39,7 @@ class HogeView {
                     ), (_) => false);
                   },
                   child: Text(
-                    "go fuga",
+                    "go piyo",
                     style: TextStyle( fontSize: contentWidth / 16 ),
                   )
               )
@@ -54,9 +54,9 @@ class HogeView {
                     onPrimary: Colors.white,
                   ),
                   onPressed: (){
-                    HogeModel hogeModel = ref.watch(hogeProvider.notifier);
-                    hogeModel.setHoge('abc');
-                    hogeModel.setFuga(123);
+                    FugaModel fugaModel = ref.watch(fugaProvider.notifier);
+                    fugaModel.setHoge('def');
+                    fugaModel.setFuga(456);
                   },
                   child: Text(
                     "SET",
@@ -66,8 +66,8 @@ class HogeView {
           ),
           SizedBox( height: 20 ),
           Text( 'hogehogeData $hogehoge', style: TextStyle( fontSize: contentWidth / 16 ) ),
-          (hoge != null) ? Text( 'hogeData ' + hoge, style: TextStyle( fontSize: contentWidth / 16 ) ) : Container(),
-          (fuga != null) ? Text( 'hogeData $fuga', style: TextStyle( fontSize: contentWidth / 16 ) ) : Container(),
+          Text( 'fugaData ' + hoge, style: TextStyle( fontSize: contentWidth / 16 ) ),
+          Text( 'fugaData $fuga', style: TextStyle( fontSize: contentWidth / 16 ) ),
         ] );
   }
 }
