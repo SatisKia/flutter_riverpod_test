@@ -8,16 +8,16 @@ class FugaViewModel extends ConsumerWidget {
 
   @override
   Widget build( BuildContext context, WidgetRef ref ) {
-    double contentWidth = MediaQuery.of( context ).size.width;
+    debugPrint('FugaViewModel build');
 
-    FugaView view = FugaView();
+    double contentWidth = MediaQuery.of( context ).size.width;
 
     return Scaffold(
       appBar: AppBar(
           title: Text( 'fuga', style: TextStyle( fontSize: contentWidth / 16 ) ),
           toolbarHeight: contentWidth / 8
       ),
-      body: view.build( context, ref, contentWidth ), // ビューにWidgetRefを渡す
+      body: FugaView().build( ref, contentWidth ), // ビューにWidgetRefを渡す
     );
   }
 }

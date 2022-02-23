@@ -8,16 +8,16 @@ class HogeViewModel extends ConsumerWidget {
 
   @override
   Widget build( BuildContext context, WidgetRef ref ) {
+    debugPrint('HogeViewModel build');
+
     double contentWidth = MediaQuery.of( context ).size.width;
 
-    HogeView view = HogeView();
-
     return Scaffold(
-        appBar: AppBar(
-            title: Text( 'hoge', style: TextStyle( fontSize: contentWidth / 16 ) ),
-            toolbarHeight: contentWidth / 8
-        ),
-        body: view.build( context, ref, contentWidth ), // ビューにWidgetRefを渡す
+      appBar: AppBar(
+          title: Text( 'hoge', style: TextStyle( fontSize: contentWidth / 16 ) ),
+          toolbarHeight: contentWidth / 8
+      ),
+      body: HogeView().build( ref, contentWidth ), // ビューにWidgetRefを渡す
     );
   }
 }
