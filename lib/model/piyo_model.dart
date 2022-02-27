@@ -3,8 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../data/hoge_data.dart';
 
 class PiyoModel extends StateNotifier<HogeData> {
-  Reader read;
-  PiyoModel(this.read) : super(const HogeData());
+  PiyoModel() : super(const HogeData());
 
   // 状態を更新する関数
   setHoge(String hoge) {
@@ -16,4 +15,4 @@ class PiyoModel extends StateNotifier<HogeData> {
 }
 
 // Riverpodのプロバイダー
-final piyoProvider = StateNotifierProvider<PiyoModel, HogeData>((ref) => PiyoModel(ref.read));
+final piyoProvider = StateNotifierProvider<PiyoModel, HogeData>((ref) => PiyoModel());
