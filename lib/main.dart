@@ -29,3 +29,11 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+// グローバル
+final StateProvider<int> _hogeraProvider = StateProvider<int>((_) => 0);
+int readHogera(WidgetRef ref) => ref.read(_hogeraProvider);
+int watchHogera(WidgetRef ref) => ref.watch(_hogeraProvider);
+void updateHogera(WidgetRef ref, int value) {
+  ref.read(_hogeraProvider.state).update((_) => value);
+}

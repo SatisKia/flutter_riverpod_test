@@ -6,22 +6,24 @@ import '../data/hogehoge_data.dart';
 import '../main.dart';
 import '../model/hogehoge_model.dart';
 import '../model/piyo_model.dart';
+import '../view_model/piyo_view_model.dart';
 
 class PiyoView {
-  Widget build( WidgetRef ref, double contentWidth ) {
+  Widget build( WidgetRef ref, PiyoViewState state ) {
     debugPrint('PiyoView build');
     return Column( children: [
-      PiyoViewWidgetA( contentWidth ),
-      PiyoViewWidgetB( contentWidth ),
-      PiyoViewWidgetC( contentWidth ),
-      PiyoViewWidgetD( contentWidth ),
+      PiyoViewWidgetA( state ),
+      PiyoViewWidgetB( state ),
+      PiyoViewWidgetC( state ),
+      PiyoViewWidgetD( state ),
+      PiyoViewWidgetE( state ),
     ] );
   }
 }
 
 class PiyoViewWidgetA extends ConsumerWidget {
-  final double contentWidth;
-  const PiyoViewWidgetA( this.contentWidth, {Key? key} ) : super(key: key);
+  final PiyoViewState state;
+  const PiyoViewWidgetA( this.state, {Key? key} ) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -29,8 +31,8 @@ class PiyoViewWidgetA extends ConsumerWidget {
     return Column( children: [
       SizedBox( height: 20 ),
       SizedBox(
-          width: contentWidth,
-          height: contentWidth / 8,
+          width: state.contentWidth,
+          height: state.contentWidth / 8,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
                 primary: Colors.blueAccent.shade700,
@@ -46,17 +48,17 @@ class PiyoViewWidgetA extends ConsumerWidget {
               },
               child: Text(
                 "Go hoge",
-                style: TextStyle( fontSize: contentWidth / 16 ),
+                style: TextStyle( fontSize: state.contentWidth / 16 ),
               )
           )
       ),
       SizedBox( height: 20 ),
       SizedBox(
-          width: contentWidth,
-          height: contentWidth / 8,
+          width: state.contentWidth,
+          height: state.contentWidth / 8,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.blueAccent.shade400,
+                primary: Colors.blueAccent.shade700,
                 onPrimary: Colors.white,
               ),
               onPressed: (){
@@ -65,16 +67,16 @@ class PiyoViewWidgetA extends ConsumerWidget {
               },
               child: Text(
                 "increment",
-                style: TextStyle( fontSize: contentWidth / 16 ),
+                style: TextStyle( fontSize: state.contentWidth / 16 ),
               )
           )
       ),
       SizedBox(
-          width: contentWidth,
-          height: contentWidth / 8,
+          width: state.contentWidth,
+          height: state.contentWidth / 8,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.blueAccent.shade200,
+                primary: Colors.blueAccent.shade400,
                 onPrimary: Colors.white,
               ),
               onPressed: (){
@@ -83,16 +85,16 @@ class PiyoViewWidgetA extends ConsumerWidget {
               },
               child: Text(
                 "setHoge",
-                style: TextStyle( fontSize: contentWidth / 16 ),
+                style: TextStyle( fontSize: state.contentWidth / 16 ),
               )
           )
       ),
       SizedBox(
-          width: contentWidth,
-          height: contentWidth / 8,
+          width: state.contentWidth,
+          height: state.contentWidth / 8,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.blueAccent.shade100,
+                primary: Colors.blueAccent.shade200,
                 onPrimary: Colors.white,
               ),
               onPressed: (){
@@ -101,7 +103,25 @@ class PiyoViewWidgetA extends ConsumerWidget {
               },
               child: Text(
                 "setFuga",
-                style: TextStyle( fontSize: contentWidth / 16 ),
+                style: TextStyle( fontSize: state.contentWidth / 16 ),
+              )
+          )
+      ),
+      SizedBox(
+          width: state.contentWidth,
+          height: state.contentWidth / 8,
+          child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blueAccent.shade100,
+                onPrimary: Colors.white,
+              ),
+              onPressed: (){
+                int value = state.readHogera(ref);
+                state.updateHogera(ref, value + 1);
+              },
+              child: Text(
+                "update localHogera",
+                style: TextStyle( fontSize: state.contentWidth / 16 ),
               )
           )
       ),
@@ -111,8 +131,8 @@ class PiyoViewWidgetA extends ConsumerWidget {
 }
 
 class PiyoViewWidgetB extends ConsumerWidget {
-  final double contentWidth;
-  const PiyoViewWidgetB( this.contentWidth, {Key? key} ) : super(key: key);
+  final PiyoViewState state;
+  const PiyoViewWidgetB( this.state, {Key? key} ) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -122,14 +142,14 @@ class PiyoViewWidgetB extends ConsumerWidget {
     int hogehoge = hogehogeData.hogehoge;
 
     return Column( children: [
-      Text( 'hogehogeData $hogehoge', style: TextStyle( fontSize: contentWidth / 16 ) ),
+      Text( 'hogehogeData $hogehoge', style: TextStyle( fontSize: state.contentWidth / 16 ) ),
     ] );
   }
 }
 
 class PiyoViewWidgetC extends ConsumerWidget {
-  final double contentWidth;
-  const PiyoViewWidgetC( this.contentWidth, {Key? key} ) : super(key: key);
+  final PiyoViewState state;
+  const PiyoViewWidgetC( this.state, {Key? key} ) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -139,14 +159,14 @@ class PiyoViewWidgetC extends ConsumerWidget {
     String? hoge = hogeData.hoge;
 
     return Column( children: [
-      Text( 'hogeData ' + ((hoge == null) ? 'null' : hoge), style: TextStyle( fontSize: contentWidth / 16 ) ),
+      Text( 'hogeData ' + ((hoge == null) ? 'null' : hoge), style: TextStyle( fontSize: state.contentWidth / 16 ) ),
     ] );
   }
 }
 
 class PiyoViewWidgetD extends ConsumerWidget {
-  final double contentWidth;
-  const PiyoViewWidgetD( this.contentWidth, {Key? key} ) : super(key: key);
+  final PiyoViewState state;
+  const PiyoViewWidgetD( this.state, {Key? key} ) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -156,7 +176,23 @@ class PiyoViewWidgetD extends ConsumerWidget {
     int? fuga = hogeData.fuga;
 
     return Column( children: [
-      Text( 'hogeData ' + ((fuga == null) ? 'null' : '$fuga'), style: TextStyle( fontSize: contentWidth / 16 ) ),
+      Text( 'hogeData ' + ((fuga == null) ? 'null' : '$fuga'), style: TextStyle( fontSize: state.contentWidth / 16 ) ),
+    ] );
+  }
+}
+
+class PiyoViewWidgetE extends ConsumerWidget {
+  final PiyoViewState state;
+  const PiyoViewWidgetE( this.state, {Key? key} ) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    debugPrint('PiyoViewWidgetE build');
+
+    final int hogera = state.watchHogera(ref);
+
+    return Column( children: [
+      Text( 'localHogera $hogera', style: TextStyle( fontSize: state.contentWidth / 16 ) ),
     ] );
   }
 }

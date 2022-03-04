@@ -16,6 +16,7 @@ class HogeView {
           HogeViewWidgetB( contentWidth ),
           HogeViewWidgetC( contentWidth ),
           HogeViewWidgetD( contentWidth ),
+          HogeViewWidgetE( contentWidth ),
         ]
     );
   }
@@ -58,7 +59,7 @@ class HogeViewWidgetA extends ConsumerWidget {
           height: contentWidth / 8,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.blueAccent.shade400,
+                primary: Colors.blueAccent.shade700,
                 onPrimary: Colors.white,
               ),
               onPressed: (){
@@ -76,7 +77,7 @@ class HogeViewWidgetA extends ConsumerWidget {
           height: contentWidth / 8,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.blueAccent.shade200,
+                primary: Colors.blueAccent.shade400,
                 onPrimary: Colors.white,
               ),
               onPressed: (){
@@ -94,7 +95,7 @@ class HogeViewWidgetA extends ConsumerWidget {
           height: contentWidth / 8,
           child: ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.blueAccent.shade100,
+                primary: Colors.blueAccent.shade200,
                 onPrimary: Colors.white,
               ),
               onPressed: (){
@@ -103,6 +104,24 @@ class HogeViewWidgetA extends ConsumerWidget {
               },
               child: Text(
                 "setFuga",
+                style: TextStyle( fontSize: contentWidth / 16 ),
+              )
+          )
+      ),
+      SizedBox(
+          width: contentWidth,
+          height: contentWidth / 8,
+          child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                primary: Colors.blueAccent.shade100,
+                onPrimary: Colors.white,
+              ),
+              onPressed: (){
+                int value = readHogera(ref);
+                updateHogera(ref, value + 1);
+              },
+              child: Text(
+                "update globalHogera",
                 style: TextStyle( fontSize: contentWidth / 16 ),
               )
           )
@@ -159,6 +178,22 @@ class HogeViewWidgetD extends ConsumerWidget {
 
     return Column( children: [
       Text( 'hogeData ' + ((fuga == null) ? 'null' : '$fuga'), style: TextStyle( fontSize: contentWidth / 16 ) ),
+    ] );
+  }
+}
+
+class HogeViewWidgetE extends ConsumerWidget {
+  final double contentWidth;
+  const HogeViewWidgetE( this.contentWidth, {Key? key} ) : super(key: key);
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    debugPrint('HogeViewWidgetE build');
+
+    final int hogera = watchHogera(ref);
+
+    return Column( children: [
+      Text( 'hogera $hogera', style: TextStyle( fontSize: contentWidth / 16 ) ),
     ] );
   }
 }
