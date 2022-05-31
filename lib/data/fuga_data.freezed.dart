@@ -12,22 +12,7 @@ part of 'fuga_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$FugaDataTearOff {
-  const _$FugaDataTearOff();
-
-  _FugaData call({String hoge = 'aaa', int fuga = 111}) {
-    return _FugaData(
-      hoge: hoge,
-      fuga: fuga,
-    );
-  }
-}
-
-/// @nodoc
-const $FugaData = _$FugaDataTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$FugaData {
@@ -74,28 +59,30 @@ class _$FugaDataCopyWithImpl<$Res> implements $FugaDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$FugaDataCopyWith<$Res> implements $FugaDataCopyWith<$Res> {
-  factory _$FugaDataCopyWith(_FugaData value, $Res Function(_FugaData) then) =
-      __$FugaDataCopyWithImpl<$Res>;
+abstract class _$$_FugaDataCopyWith<$Res> implements $FugaDataCopyWith<$Res> {
+  factory _$$_FugaDataCopyWith(
+          _$_FugaData value, $Res Function(_$_FugaData) then) =
+      __$$_FugaDataCopyWithImpl<$Res>;
   @override
   $Res call({String hoge, int fuga});
 }
 
 /// @nodoc
-class __$FugaDataCopyWithImpl<$Res> extends _$FugaDataCopyWithImpl<$Res>
-    implements _$FugaDataCopyWith<$Res> {
-  __$FugaDataCopyWithImpl(_FugaData _value, $Res Function(_FugaData) _then)
-      : super(_value, (v) => _then(v as _FugaData));
+class __$$_FugaDataCopyWithImpl<$Res> extends _$FugaDataCopyWithImpl<$Res>
+    implements _$$_FugaDataCopyWith<$Res> {
+  __$$_FugaDataCopyWithImpl(
+      _$_FugaData _value, $Res Function(_$_FugaData) _then)
+      : super(_value, (v) => _then(v as _$_FugaData));
 
   @override
-  _FugaData get _value => super._value as _FugaData;
+  _$_FugaData get _value => super._value as _$_FugaData;
 
   @override
   $Res call({
     Object? hoge = freezed,
     Object? fuga = freezed,
   }) {
-    return _then(_FugaData(
+    return _then(_$_FugaData(
       hoge: hoge == freezed
           ? _value.hoge
           : hoge // ignore: cast_nullable_to_non_nullable
@@ -113,11 +100,12 @@ class __$FugaDataCopyWithImpl<$Res> extends _$FugaDataCopyWithImpl<$Res>
 class _$_FugaData implements _FugaData {
   const _$_FugaData({this.hoge = 'aaa', this.fuga = 111});
 
-  @JsonKey()
-  @override // 状態をもつ変数
-  final String hoge;
-  @JsonKey()
+// 状態をもつ変数
   @override
+  @JsonKey()
+  final String hoge;
+  @override
+  @JsonKey()
   final int fuga;
 
   @override
@@ -129,7 +117,7 @@ class _$_FugaData implements _FugaData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _FugaData &&
+            other is _$_FugaData &&
             const DeepCollectionEquality().equals(other.hoge, hoge) &&
             const DeepCollectionEquality().equals(other.fuga, fuga));
   }
@@ -142,19 +130,19 @@ class _$_FugaData implements _FugaData {
 
   @JsonKey(ignore: true)
   @override
-  _$FugaDataCopyWith<_FugaData> get copyWith =>
-      __$FugaDataCopyWithImpl<_FugaData>(this, _$identity);
+  _$$_FugaDataCopyWith<_$_FugaData> get copyWith =>
+      __$$_FugaDataCopyWithImpl<_$_FugaData>(this, _$identity);
 }
 
 abstract class _FugaData implements FugaData {
-  const factory _FugaData({String hoge, int fuga}) = _$_FugaData;
+  const factory _FugaData({final String hoge, final int fuga}) = _$_FugaData;
 
   @override // 状態をもつ変数
-  String get hoge;
+  String get hoge => throw _privateConstructorUsedError;
   @override
-  int get fuga;
+  int get fuga => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$FugaDataCopyWith<_FugaData> get copyWith =>
+  _$$_FugaDataCopyWith<_$_FugaData> get copyWith =>
       throw _privateConstructorUsedError;
 }

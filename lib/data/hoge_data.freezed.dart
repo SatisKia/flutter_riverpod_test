@@ -12,22 +12,7 @@ part of 'hoge_data.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more informations: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
-
-/// @nodoc
-class _$HogeDataTearOff {
-  const _$HogeDataTearOff();
-
-  _HogeData call({String? hoge, int? fuga}) {
-    return _HogeData(
-      hoge: hoge,
-      fuga: fuga,
-    );
-  }
-}
-
-/// @nodoc
-const $HogeData = _$HogeDataTearOff();
+    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 /// @nodoc
 mixin _$HogeData {
@@ -74,28 +59,30 @@ class _$HogeDataCopyWithImpl<$Res> implements $HogeDataCopyWith<$Res> {
 }
 
 /// @nodoc
-abstract class _$HogeDataCopyWith<$Res> implements $HogeDataCopyWith<$Res> {
-  factory _$HogeDataCopyWith(_HogeData value, $Res Function(_HogeData) then) =
-      __$HogeDataCopyWithImpl<$Res>;
+abstract class _$$_HogeDataCopyWith<$Res> implements $HogeDataCopyWith<$Res> {
+  factory _$$_HogeDataCopyWith(
+          _$_HogeData value, $Res Function(_$_HogeData) then) =
+      __$$_HogeDataCopyWithImpl<$Res>;
   @override
   $Res call({String? hoge, int? fuga});
 }
 
 /// @nodoc
-class __$HogeDataCopyWithImpl<$Res> extends _$HogeDataCopyWithImpl<$Res>
-    implements _$HogeDataCopyWith<$Res> {
-  __$HogeDataCopyWithImpl(_HogeData _value, $Res Function(_HogeData) _then)
-      : super(_value, (v) => _then(v as _HogeData));
+class __$$_HogeDataCopyWithImpl<$Res> extends _$HogeDataCopyWithImpl<$Res>
+    implements _$$_HogeDataCopyWith<$Res> {
+  __$$_HogeDataCopyWithImpl(
+      _$_HogeData _value, $Res Function(_$_HogeData) _then)
+      : super(_value, (v) => _then(v as _$_HogeData));
 
   @override
-  _HogeData get _value => super._value as _HogeData;
+  _$_HogeData get _value => super._value as _$_HogeData;
 
   @override
   $Res call({
     Object? hoge = freezed,
     Object? fuga = freezed,
   }) {
-    return _then(_HogeData(
+    return _then(_$_HogeData(
       hoge: hoge == freezed
           ? _value.hoge
           : hoge // ignore: cast_nullable_to_non_nullable
@@ -113,7 +100,8 @@ class __$HogeDataCopyWithImpl<$Res> extends _$HogeDataCopyWithImpl<$Res>
 class _$_HogeData implements _HogeData {
   const _$_HogeData({this.hoge, this.fuga});
 
-  @override // 状態をもつ変数
+// 状態をもつ変数
+  @override
   final String? hoge;
   @override
   final int? fuga;
@@ -127,7 +115,7 @@ class _$_HogeData implements _HogeData {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _HogeData &&
+            other is _$_HogeData &&
             const DeepCollectionEquality().equals(other.hoge, hoge) &&
             const DeepCollectionEquality().equals(other.fuga, fuga));
   }
@@ -140,19 +128,19 @@ class _$_HogeData implements _HogeData {
 
   @JsonKey(ignore: true)
   @override
-  _$HogeDataCopyWith<_HogeData> get copyWith =>
-      __$HogeDataCopyWithImpl<_HogeData>(this, _$identity);
+  _$$_HogeDataCopyWith<_$_HogeData> get copyWith =>
+      __$$_HogeDataCopyWithImpl<_$_HogeData>(this, _$identity);
 }
 
 abstract class _HogeData implements HogeData {
-  const factory _HogeData({String? hoge, int? fuga}) = _$_HogeData;
+  const factory _HogeData({final String? hoge, final int? fuga}) = _$_HogeData;
 
   @override // 状態をもつ変数
-  String? get hoge;
+  String? get hoge => throw _privateConstructorUsedError;
   @override
-  int? get fuga;
+  int? get fuga => throw _privateConstructorUsedError;
   @override
   @JsonKey(ignore: true)
-  _$HogeDataCopyWith<_HogeData> get copyWith =>
+  _$$_HogeDataCopyWith<_$_HogeData> get copyWith =>
       throw _privateConstructorUsedError;
 }

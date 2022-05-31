@@ -27,8 +27,8 @@ class PiyoViewState extends ConsumerState with WidgetsBindingObserver {
   void initState(){
     super.initState();
     debugPrint('onInit');
-    WidgetsBinding.instance!.addObserver(this);
-    WidgetsBinding.instance!.addPostFrameCallback((_) {
+    WidgetsBinding.instance.addObserver(this);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
       // ウィジェットのビルド完了
       debugPrint('onReady');
 
@@ -40,7 +40,7 @@ class PiyoViewState extends ConsumerState with WidgetsBindingObserver {
 
   @override
   void dispose() {
-    WidgetsBinding.instance!.removeObserver(this);
+    WidgetsBinding.instance.removeObserver(this);
     debugPrint('onDispose');
     super.dispose();
   }
